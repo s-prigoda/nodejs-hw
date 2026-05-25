@@ -38,7 +38,7 @@ export const updateNote = async (req, res) => {
   });
 
   if (!note) {
-    throw createHttpError(404, 'Notes not found');
+    throw createHttpError(404, 'Note not found');
   }
   res.status(200).json(note);
 };
