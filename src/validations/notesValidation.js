@@ -13,7 +13,7 @@ export const getAllNotesSchema = {
 
 const validateObjectId = (value, helpers) => {
   if (!isValidObjectId(value)) {
-    return helpers.message('valid ObjectId');
+    return helpers.message('noteId повинен бути валідним ObjectId');
   }
   return value;
 };
