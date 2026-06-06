@@ -3,16 +3,17 @@ import { model, Schema } from 'mongoose';
 const userSchema = new Schema(
   {
     username: { type: String, trim: true },
-    email: { type: String, unique: true, require: true, trim: true },
-    password: { type: String, required: true },
+    email: { type: String, unique: true, required: true, trim: true },
+    password: { type: String, required: true, min: 8 },
   },
   { timestamps: true },
 );
 
-userSchema.pre('save', function () {
+userSchema.pre('save', function (next) {
   if (!this.username) {
-    this.username = this.email;
+    this.username = this.email.split('@')[0];
   }
+  next();
 });
 
 userSchema.methods.toJSON = function () {
