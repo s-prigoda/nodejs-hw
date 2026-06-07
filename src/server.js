@@ -11,6 +11,7 @@ import { errors } from 'celebrate';
 
 import authRoutes from './routes/authRoutes.js';
 import NotesRoutes from './routes/notesRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -27,6 +28,7 @@ app.use(cookieParser());
 
 app.use(authRoutes);
 app.use(NotesRoutes);
+app.use(userRoutes);
 
 app.use(errors());
 app.use(notFoundHandler);
